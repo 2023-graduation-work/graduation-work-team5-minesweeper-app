@@ -1,9 +1,9 @@
 #Greenfoot project file
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
-height=686
+editor.fx.0.height=737
+editor.fx.0.width=814
+editor.fx.0.x=232
+editor.fx.0.y=-22
+height=400
 package.numDependencies=0
 package.numTargets=1
 project.charset=UTF-8
@@ -28,7 +28,7 @@ target1.width=120
 target1.x=0
 target1.y=0
 version=3.0.0
-width=1294
+width=700
 world.lastInstantiated=MyWorld
-xPosition=0
-yPosition=0
+xPosition=79
+yPosition=337
