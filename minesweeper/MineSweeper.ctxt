@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=MineSweeper
+comment1.params=
+comment1.target=MineSweeper()
+comment2.params=
+comment2.target=void\ generateBoard()
+comment3.params=x\ y
+comment3.target=int\ countAdjacentMines(int,\ int)
+numComments=4

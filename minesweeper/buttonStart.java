@@ -20,9 +20,9 @@ public class buttonStart extends Actor
             int button = minfo.getButton();
             Actor actor = minfo.getActor();
             if (actor == this && button == 1) {
-                World game = new gameScreen();
+                World game = new MineSweeper();
                 Greenfoot.setWorld(game);
-                addedToWorld(new gameScreen());
+                addedToWorld(new MineSweeper());
             }
         }
     }
