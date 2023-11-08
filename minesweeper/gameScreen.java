@@ -38,9 +38,4 @@ public class gameScreen extends World
             }
         }
     }
-    public void act() {
-       
-       timecount += 1;
-       showText("Time: " + timecount, 60, 30 );
-    }
 }

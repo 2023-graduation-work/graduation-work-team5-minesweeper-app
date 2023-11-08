@@ -1,6 +1,23 @@
 import greenfoot.*;
 
 public class Cell extends Actor {
+    /** The time in milliseconds that the stopwatch was stopped/paused. */
+    public long stoppedTime;
+    /** The time in milliseconds that the stopwatch was started/resumed. */
+    public long startedTime;
+    /** The time in milliseconds that the stopwatch was resumed (by the start button actor). */
+    public long startedMiddle;
+    /** The time in milliseconds that the stopwatch was paused (by the stop button actor). */
+    public long stoppedMiddle;
+    /** True when the execution has been stopped. */
+    public boolean stopped = false;
+    /** True if the stopwatch was paused by the stop button actor. */
+    public boolean buttonStopped = true;
+    /** True when the stopwatch was stopped by the stop button actor. */
+    public boolean middleStop = false;
+    /** A reset boolean which is true when the stopwatch should be reset. */
+    public boolean reset = true;
+    
     private boolean isMine;
     private boolean isOpen;
     private int adjacentMines;
@@ -46,6 +63,17 @@ public class Cell extends Actor {
     }
     public void openCell() {
         isOpen = true;
+        startedTime = System.currentTimeMillis();
+        MineSweeper world = (MineSweeper) getWorld();
+        if (Greenfoot.mouseClicked(this))
+        {
+            world.buttonStopped = false;
+            world.reset = false;
+            if (world.middleStop)
+            {
+                world.startedMiddle = System.currentTimeMillis();
+            }
+        }
         if (isMine) {
             setImage("bomb.png"); // 地雷の画像
             gameOver();
@@ -81,6 +109,8 @@ public class Cell extends Actor {
     }
     private void gameOver() {
         // ゲームオーバー処理を実行
+        stopped = true;
+        stoppedTime = System.currentTimeMillis();
         Greenfoot.stop();
     }
 }
