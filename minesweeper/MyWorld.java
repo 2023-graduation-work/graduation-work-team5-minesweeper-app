@@ -19,14 +19,14 @@ public class MyWorld extends World
         addObject( new buttonStart(), 300, 300 );
         addObject( new title(), 300, 100 );
         Random random = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             setBomb();
         }
     }
     public void setBomb() {
         Random random = new Random();
         int x = random.nextInt(600) + 1;
-        int y = random.nextInt(400) + 1;
+        int y = random.nextInt(550) + 1;
         addObject( new bomb(), x, y );
     }
 }

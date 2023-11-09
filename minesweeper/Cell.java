@@ -80,7 +80,7 @@ public class Cell extends Actor {
         } else {
             setImage("open_cell.png"); // セルが開かれた状態の画像
             if (adjacentMines == 0) {
-            expandEmptyCells();
+                expandEmptyCells();
             } else {
                 showAdjacentMines();
             }
@@ -98,7 +98,7 @@ public class Cell extends Actor {
             for (int dy = -1; dy <= 1; dy++) {
                 int newX = getX() + dx;
                 int newY = getY() + dy;
-                if (newX >= 0 && newX < getWorld().getWidth() && newY >= 0 && newY < getWorld().getHeight()) {
+                if (newX >= 0 && newX < getWorld().getWidth() && newY >= 4 && newY < getWorld().getHeight()) {
                     Cell adjacentCell = (Cell) getWorld().getObjectsAt(newX, newY, Cell.class).get(0);
                     if (!adjacentCell.isOpen) {
                         adjacentCell.openCell(); // 隣接するセルを開く

@@ -18,10 +18,10 @@ public class bomb extends Actor
         int x = getX();
         int y = getY();
         Random random = new Random();
-        int a = random.nextInt(600)+1;
-        int b = random.nextInt(400)+1;
+        int a = random.nextInt(x)+1;
+        int b = random.nextInt(y)+1;
         setRotation(random.nextInt(361));
-        move(1);
+        move(0);
         if( isAtEdge() ){
             getWorld().removeObject( this );
         }
