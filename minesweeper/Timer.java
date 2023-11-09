@@ -10,7 +10,6 @@ public class Timer extends Actor
 {
     private long startTime; // this is the starting time of the scenario
     private int elapsedTime = 00; // this is the total elapsed time
-    private int hour = 00;
     private int minute = 00;
     private int second = 00;
     private int hun = 00;
@@ -62,8 +61,6 @@ public class Timer extends Actor
             }
             if (!world.buttonStopped && !world.middleStop)
             {
-                hour = elapsedTime / 3600000;
-                elapsedTime -= hour * 3600000;
                 minute = elapsedTime / 60000;
                 elapsedTime -= minute * 60000;
                 second = elapsedTime / 1000;
@@ -71,7 +68,7 @@ public class Timer extends Actor
                 hun = elapsedTime / 10;
             }
         }
-        return new DecimalFormat("00").format(hour) + ":" + new DecimalFormat("00").format(minute) + ":" + new DecimalFormat("00").format(second) + "." + new DecimalFormat("00").format(hun);
+        return new DecimalFormat("00").format(minute) + ":" + new DecimalFormat("00").format(second) + "." + new DecimalFormat("00").format(hun);
         // the above line makes the timer string, the decimal format makes the timer have two digits (00) (you could do more if you do (000) or (0.0) etc.)
     }
 
@@ -88,7 +85,6 @@ public class Timer extends Actor
             hun = 00;
             second = 00;
             minute = 00;
-            hour = 00;
         }
     }
 }
