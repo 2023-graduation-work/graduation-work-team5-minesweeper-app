@@ -19,9 +19,9 @@ public class Cell extends Actor {
     public boolean reset = true;
     
     private boolean isMine;
-    private boolean isOpen;
+    private boolean isOpen = false;
     private int adjacentMines;
-    private boolean onflag;
+    private boolean onflag;    
     public Cell() {
         isMine = false;
         isOpen = false;
@@ -62,9 +62,11 @@ public class Cell extends Actor {
         adjacentMines = count;
     }
     public void openCell() {
+        MineSweeper world = (MineSweeper) getWorld();
+        if(world.gameEnd) return; // ゲーム終了状態ならReturn
+        
         isOpen = true;
         startedTime = System.currentTimeMillis();
-        MineSweeper world = (MineSweeper) getWorld();
         if (Greenfoot.mouseClicked(this))
         {
             world.buttonStopped = false;
@@ -109,8 +111,17 @@ public class Cell extends Actor {
     }
     private void gameOver() {
         // ゲームオーバー処理を実行
+        isOpen = false;
         stopped = true;
         stoppedTime = System.currentTimeMillis();
-        Greenfoot.stop();
+        MineSweeper world = (MineSweeper) getWorld();
+        if (Greenfoot.mouseClicked(this) && !world.buttonStopped)
+        {
+            world.gameEnd = true; // ゲーム終了通知
+            world.buttonStopped = true;
+            world.stoppedMiddle = System.currentTimeMillis();
+            world.middleStop = true;
+        }
+        getWorld().addObject( new GameOver(), 8, 8 );
     }
 }
