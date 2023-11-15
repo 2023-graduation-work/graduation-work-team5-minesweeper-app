@@ -27,7 +27,7 @@ public class Cell extends Actor {
         isOpen = false;
         onflag = false;
         adjacentMines = 0;
-        setImage("closed_cell.png"); // セルが閉じられた状態の画像
+        setImage("tile.png"); // セルが閉じられた状態の画像
     }
 
     public void act() {
