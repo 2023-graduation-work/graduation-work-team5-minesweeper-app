@@ -1,6 +1,6 @@
 #Greenfoot project file
 class.Cell.image=boy1.png
-class.GameOver.image=\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC.jpg
+class.GameOver.image=\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC.png
 class.MyWorld.image=background.png
 class.bomb.image=bomb.png
 class.buttonRestart.image=\u30EA\u30B9\u30BF\u30FC\u30C8\ (1).png
@@ -45,10 +45,10 @@ dependency8.type=UsesDependency
 dependency9.from=buttonRestart
 dependency9.to=MineSweeper
 dependency9.type=UsesDependency
-editor.fx.0.height=737
-editor.fx.0.width=814
-editor.fx.0.x=232
-editor.fx.0.y=-22
+editor.fx.0.height=706
+editor.fx.0.width=1294
+editor.fx.0.x=-182
+editor.fx.0.y=89
 height=686
 package.numDependencies=12
 package.numTargets=12
