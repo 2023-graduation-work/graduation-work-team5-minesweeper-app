@@ -43,6 +43,7 @@ public class Cell extends Actor {
                 }
             } 
         }
+        gameClear();
     }
     private void placeFlag() {
         setImage("flag.png"); // 旗の画像
@@ -100,7 +101,7 @@ public class Cell extends Actor {
             for (int dy = -1; dy <= 1; dy++) {
                 int newX = getX() + dx;
                 int newY = getY() + dy;
-                if (newX >= 0 && newX < getWorld().getWidth() && newY >= 4 && newY < getWorld().getHeight()) {
+                if (newX >= 0 && newX < getWorld().getWidth() && newY >= 3 && newY < getWorld().getHeight()) {
                     Cell adjacentCell = (Cell) getWorld().getObjectsAt(newX, newY, Cell.class).get(0);
                     if (!adjacentCell.isOpen) {
                         adjacentCell.openCell(); // 隣接するセルを開く
@@ -123,5 +124,28 @@ public class Cell extends Actor {
             world.middleStop = true;
         }
         getWorld().addObject( new GameOver(), 8, 8 );
+    }
+    private void gameClear() {
+        int count = 0;
+        for (int x = 0; x < 18; x++) {
+            for (int y = 3; y < 17; y++) {
+                Cell judge = (Cell) getWorld().getObjectsAt(x, y, Cell.class).get(0);
+                if((!judge.isMine && judge.isOpen) || (judge.isMine && !judge.isOpen)) {
+                    count++;
+                }
+            }
+        }
+        if (count == 252) {
+            stopped = true;
+            stoppedTime = System.currentTimeMillis();
+            MineSweeper world = (MineSweeper) getWorld();
+            if (Greenfoot.mouseClicked(this) && !world.buttonStopped) {
+                world.gameEnd = true; // ゲーム終了通知
+                world.buttonStopped = true;
+                world.stoppedMiddle = System.currentTimeMillis();
+                world.middleStop = true;
+            }
+            getWorld().addObject( new gameClear(), 8, 8 );
+        }
     }
 }

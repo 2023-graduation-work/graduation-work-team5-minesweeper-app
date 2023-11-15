@@ -35,7 +35,6 @@ public class MineSweeper extends World {
         addObject( new buttonRestart(), 13, 1 );
         Greenfoot.start();
     }
-
     private void generateBoard() {
         // Create cells
         for (int x = 0; x < WIDTH; x++) {
@@ -43,7 +42,6 @@ public class MineSweeper extends World {
                 addObject(new Cell(), x, y);
             }
         }
-
         // Generate random mines
         Random random = new Random();
         for (int i = 0; i < NUM_MINES; i++) {
@@ -54,7 +52,6 @@ public class MineSweeper extends World {
             } while (getObjectsAt(x, y, Cell.class).size() == 0 || getObjectsAt(x, y, Cell.class).get(0).hasMine());
             getObjectsAt(x, y, Cell.class).get(0).setMine();
         }
-
         // Calculate adjacent mines for each cell
         for (int x = 0; x < WIDTH; x++) {
             for (int y = 3; y < HEIGHT+3; y++) {
@@ -66,14 +63,13 @@ public class MineSweeper extends World {
             }
         }
     }
-
     private int countAdjacentMines(int x, int y) {
         int count = 0;
         for (int dx = -1; dx <= 1; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
                 int newX = x + dx;
                 int newY = y + dy;
-                if (newX >= 0 && newX < WIDTH && newY >= 4 && newY < HEIGHT+3) {
+                if (newX >= 0 && newX < WIDTH && newY >= 3 && newY < HEIGHT+3) {
                     if (getObjectsAt(newX, newY, Cell.class).get(0).hasMine()) {
                         count++;
                     }
