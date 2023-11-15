@@ -16,6 +16,10 @@ public class buttonStart extends Actor
      */
     public void act()
     {
+        if (Greenfoot.isKeyDown("space")) {
+            World game = new MineSweeper();
+            Greenfoot.setWorld(game);
+        }
         MouseInfo minfo = Greenfoot.getMouseInfo();
         if( minfo != null ){
             int button = minfo.getButton();
